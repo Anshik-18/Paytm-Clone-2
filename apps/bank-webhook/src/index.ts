@@ -1,5 +1,6 @@
 import express from "express";
 import db from "@repo/db/client";
+import prisma from "@repo/db/client";
 const app = express();
 
 app.use(express.json())
@@ -18,7 +19,13 @@ app.post("/hdfcWebhook", async (req, res) => {
     };
 
     try {
-        await db.$transaction([
+       const trans = await  prisma.onRampTransaction.findUnique({
+            where:{
+                token:req.body.token
+            }
+        })
+        if(trans?.status=="Processing") { 
+            await db.$transaction([
             db.balance.updateMany({
                 where: {
                     userId: Number(paymentInformation.userId)
@@ -43,6 +50,13 @@ app.post("/hdfcWebhook", async (req, res) => {
         res.json({
             message: "Captured"
         })
+    }
+    else {
+        res.status(411).json({
+            message: "Can not process the alearady proccessed transaction"
+        })
+    }
+
     } catch(e) {
         console.error(e);
         res.status(411).json({
