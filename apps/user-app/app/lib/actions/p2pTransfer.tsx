@@ -54,6 +54,14 @@ export async function p2pTransfer(to: string, amount: number) {
 
             }
           })
+          await tx.notification.create({
+            data:{
+              FromuserID : Number(from),
+              userId : toUser.id,
+              Amount : amount,
+              timestamp : new Date()  
+            }
+          })
           
           
         

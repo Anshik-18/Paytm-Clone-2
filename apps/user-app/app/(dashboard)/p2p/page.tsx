@@ -14,7 +14,7 @@ export async function recievedtransactions(){
     return recived.map(r =>({
         fromUserId : r.fromUserId,
         toUserId : r.toUserId,
-        timestimestamp  : r.timestamp,
+        timestamp  : r.timestamp,
         amount : r.amount
     }))
 
@@ -29,7 +29,7 @@ export async function sendtransactions(){
     return send.map(r =>({
         fromUserId : r.fromUserId,
         toUserId : r.toUserId,
-        timestimestamp  : r.timestamp,
+        timestamp  : r.timestamp,
         amount : r.amount
     }))
 
@@ -38,6 +38,15 @@ export async function sendtransactions(){
 
 
 export default async function () {
+    const session = await getServerSession(authOptions)
+    if(!session?.user?.id){
+        return(
+            <div>
+                User Not Logged in
+            </div>
+        )
+    }
+
     const recieved = await recievedtransactions();
     const send = await sendtransactions();
 

@@ -5,22 +5,17 @@ import { OnRampTransactions } from "../../../components/OnRampTransaction";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 
-async function getBalance() {
+
+
+ export async function getBalance() {
     const session = await getServerSession(authOptions);
-    let balance = await prisma.balance.findFirst({
+   
+    const  balance = await prisma.balance.findFirst({
         where: {
             userId: Number(session?.user?.id)
         }
     });
-    if(!balance){
-        balance =  await prisma.balance.create({
-            data:{
-                userId: Number(session?.user?.id),
-                amount: 20000,
-                locked: 0      
-            }
-        })
-    }
+  
     return {
         amount: balance?.amount || 0,
         locked: balance?.locked || 0
@@ -43,7 +38,18 @@ async function getOnRampTransactions() {
 }
 
 export default async function() {
+    const session = await getServerSession(authOptions)
+
+    if(!session?.user?.id){
+        return(
+            <div>
+                User Not Logged in
+            </div>
+        )
+    }
+  
     const balance = await getBalance();
+   
     const transactions = await getOnRampTransactions();
 
     return <div className="w-screen">
@@ -56,6 +62,7 @@ export default async function() {
             </div>
             <div>
                 <BalanceCard amount={balance.amount} locked={balance.locked} />
+
                 <div className="pt-4">
                     <OnRampTransactions transactions={transactions} />
                 </div>

@@ -6,30 +6,31 @@ export const P2pTransfer = ({
 }: { mode : string ,recieve:{
     fromUserId : number,
     toUserId : number,
-    timestimestamp  : Date,
+    timestamp  : Date,
     amount : number
 }[]}) => {
     const title  = mode === "send" ? "Money Sent" : "Money Received";
 
     if (!recieve.length) {
         return (
-            <Card title={title} className="p-6 text-center">
+            <Card title={title} >
                 <div className="text-gray-500 text-lg py-6">No Transactions</div>
             </Card>
         );
     }
+    
 
     return (
-        <Card title={title} className="p-6">
+        <Card title={title} >
             <div className="pt-2 space-y-4">
                 {recieve.map((t, index) => (
                     <div key={index} className="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-sm">
                         <div>
                             <div className="text-sm font-medium text-gray-800">
                                 {mode === "send" ? "Sent INR" : "Received INR"}
-                            </div>s
+                            </div>
                             <div className="text-gray-600 text-xs">
-                                {t.timestimestamp.toDateString()}
+                            {new Date(t.timestamp).toDateString()}
                             </div>
                         </div>
                         <div className="text-sm text-gray-700">
