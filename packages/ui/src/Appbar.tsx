@@ -1,5 +1,8 @@
+import { useEffect } from "react";
 import { Button } from "./button";
-// import { NotificationIcon } from "./Notification";
+import { NotificationIcon } from "./Notification";
+import {notifications} from "../../../apps/user-app/app/(dashboard)/notification/page"
+
 
 interface AppbarProps {
     user?: {
@@ -7,25 +10,29 @@ interface AppbarProps {
     },
     // TODO: can u figure out what the type should be here?
     onSignin: ()=>void,
-    onSignout: ()=>void,
-    count:number
+    onSignout: ()=>void
 }
 
-export const Appbar = ({
+
+
+export const  Appbar = ({
     user,
     onSignin,
-    onSignout,
-    count
+    onSignout
+    
 }: AppbarProps) => {
-    return <div className="flex justify-between border-b px-4">
-        <div className="text-lg flex flex-col justify-center">
+   
+
+
+    return <div className="flex justify-between  items-center border-b px-4">
+        <div className="text-lg ">
             PayTM 
         </div>
-        <div className="">
-            {/* <NotificationIcon count={count}/> */}
+        <div className="flex flex-col  ml-auto mr-4">
+            <NotificationIcon count={1} />
         
         </div>
-        <div className="flex flex-col justify-center pt-2">
+        <div className="flex  pt-2">
             <Button onClick={user ? onSignout : onSignin}>{user ? "Logout" : "Login"}</Button>
         </div>
     </div>

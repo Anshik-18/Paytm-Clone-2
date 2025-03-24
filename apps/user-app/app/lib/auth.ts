@@ -54,7 +54,7 @@ export const authOptions = {
                         email: existingUser.number
                     }
                 }
-                throw new Error("Please check you phone numebr or password ");
+                throw new Error("Please check you phone number or password ");
             }
 
             try {

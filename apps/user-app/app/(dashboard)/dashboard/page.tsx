@@ -7,7 +7,7 @@ import { error, timeStamp } from "console";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { Minitransaction } from "../../../components/Minitransaction";
 import { P2pTransfer } from "../../../components/p2ptransactions";
-// import { Buttonhome } from "../../../components/Button";
+import { Buttonhome } from "../../../components/Button";
 
 
 async function recenttransaction(){
@@ -77,9 +77,9 @@ export default  async function home() {
                 </div>
 
                 <div className="flex gap-x-10 ">
-                    {/* <Buttonhome path ="/p2p" text="Send Money"/>
-                    <Buttonhome  path = "/transfer" text="Withdraw Money"/> */}
-                    {/* <Buttonhome   path ="/" text="Request Money"/> */}
+                    <Buttonhome path ="/p2p" text="Send Money"/>
+                    <Buttonhome  path = "/transfer" text="Withdraw Money"/>
+                    <Buttonhome   path ="/" text="Request Money"/>
 
                 </div>
           

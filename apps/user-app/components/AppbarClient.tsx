@@ -4,10 +4,10 @@ import { Appbar } from "@repo/ui/appbar";
 import { useRouter } from "next/navigation";
 
 import { usePathname } from "next/navigation";
-// import { notifications } from "../app/(dashboard)/noitification/page";
+import { notifications } from "../app/(dashboard)/notification/page";
 
 
-export  async function AppbarClient() {
+export   function AppbarClient() {
   const session = useSession();
   const router = useRouter();
 
@@ -24,7 +24,7 @@ export  async function AppbarClient() {
           router.push("/api/auth/signin");
         }} 
         user={session.data?.user} 
-        count={0}
+
       />
     </div>
   );
