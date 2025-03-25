@@ -22,7 +22,7 @@ async function recenttransaction(){
             ]
         },
         orderBy: {
-            timestamp: "desc" // Sort by latest transactions first
+            timestamp: "desc" 
         },
         take: 5
     })
