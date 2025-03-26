@@ -55,7 +55,7 @@ app.post("/hdfcWebhook", async (req, res) => {
             },
             data: {
                 amount: {
-                    // You can also get this from your DB
+                   
                     increment: Number(paymentInformation.amount)
                 }
             }
@@ -76,22 +76,7 @@ app.post("/hdfcWebhook", async (req, res) => {
 
 
 
-    // else {
-    //     console.log("hi ")
-    //    await  db.onRampTransaction.updateMany({
-    //         where: {
-    //             token: paymentInformation.token
-    //         }, 
-    //         data: {
-    //             status: "Failure",
-    //         }
-    //     })
-
-    //     res.status(411).json({
-    //         message: "Something went wrong "
-    //     })
-    // }
-
+    
     } catch(e) {
         console.error(e);
         return res.status(411).json({
@@ -100,5 +85,5 @@ app.post("/hdfcWebhook", async (req, res) => {
     }
 
 })
-
-app.listen(3002);
+    
+app.listen(3003);

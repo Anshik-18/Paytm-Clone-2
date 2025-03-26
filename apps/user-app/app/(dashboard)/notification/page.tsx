@@ -38,7 +38,7 @@ export default async function NotificationList() {
                         <p className="text-sm text-gray-500">{n.time.toLocaleString()}</p>
                         <p className="font-semibold">From: {n.from}</p>
                         <p>{n.Message}</p>
-                        {n.Amount && <p className="text-green-500">Amount: {n.Amount}</p>}
+                        {n.Amount && <p className="text-green-500">Amount: {n.Amount/100}</p>}
                     </div>
                 ))
             )}
