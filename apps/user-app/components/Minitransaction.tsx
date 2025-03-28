@@ -22,7 +22,7 @@ export function Minitransaction({ transaction }: { transaction: {
                     {transaction.map((t, index) => (
                         <div key={index} className="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-sm">
                             <div>
-                       
+
                                 <div className="text-sm font-medium text-gray-800">
                                     {t.mode === "send" ? "Sent INR" : "Received INR"}
                                 </div>

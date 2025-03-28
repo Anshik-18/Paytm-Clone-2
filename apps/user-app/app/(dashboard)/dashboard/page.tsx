@@ -81,7 +81,7 @@ export default  async function home() {
     const transaction =  await recenttransaction()
     const name = await getuserinfo()
     return (
-        <div>
+        <div className="w-full">
 
                 <div className="text-3xl text-[#6a51a6] pt-8 mb-8 font-bold">
                     Welcome {name},
@@ -91,13 +91,13 @@ export default  async function home() {
                     Transfer
                 </div>
 
-                <div className=" flex gap-x-10" >
+                <div className=" w-full grid grid-cols-1 gap-6 md:grid-cols-2  flex p-5 " >
 
-                    <div className="w-[400px] ">
+                    <div className=" ">
                         <BalanceCard amount={balance.amount} locked={balance.locked}/>
                     </div>
 
-                    <div className="w-[700px] h-[200px] overflow-y-auto ">
+                    <div className="h-[200px] overflow-y-auto ">
                         <Minitransaction   transaction={transaction} />
                     </div>
 
@@ -107,10 +107,12 @@ export default  async function home() {
                     Quick Actions
                 </div>
 
-                <div className="flex gap-x-10 ">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4 flex ">
+                
                     <Buttonhome path ="/p2p" text="Send Money"/>
                     <Buttonhome  path = "/transfer" text="Withdraw Money"/>
                     <Buttonhome   path ="/" text="Request Money"/>
+                    <Buttonhome path = "/transaction" text = "Transactions"/>
 
                 </div>
           
