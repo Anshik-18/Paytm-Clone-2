@@ -9,6 +9,17 @@ import { Minitransaction } from "../../../components/Minitransaction";
 import { P2pTransfer } from "../../../components/p2ptransactions";
 import { Buttonhome } from "../../../components/Button";
 
+async function getuserinfo(){
+    const session = await getServerSession(authOptions);
+
+
+    const info = await prisma.user.findFirst({
+        where:{
+            id: Number(session?.user?.id)
+        }
+    })
+    return info?.name
+}
 
 async function recenttransaction(){
     const session =  await getServerSession(authOptions)
@@ -21,7 +32,20 @@ async function recenttransaction(){
 
             ]
         },
-        orderBy: {
+        include:{
+            fromUser:{
+                select:{
+                    name:true,
+                }
+            },
+            toUser:{
+                select:{
+                    name:true,
+                }
+            }
+
+        },
+        orderBy: {  
             timestamp: "desc" 
         },
         take: 5
@@ -30,6 +54,8 @@ async function recenttransaction(){
     
     return transaction.map(t=>({
        
+        fromuser : t.fromUser.name || "",
+        touser : t.toUser.name || "",
         amount : t.amount,
         timestamp : t.timestamp,
         fromUserId : t.fromUserId,
@@ -53,10 +79,15 @@ export default  async function home() {
 
     const balance   = await  getBalance()
     const transaction =  await recenttransaction()
+    const name = await getuserinfo()
     return (
         <div>
 
-                <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
+                <div className="text-3xl text-[#6a51a6] pt-8 mb-8 font-bold">
+                    Welcome {name},
+                </div>
+
+                <div className="text-4xl text-[#6a51a6] pt-3 mb-8 font-bold">
                     Transfer
                 </div>
 

@@ -1,6 +1,8 @@
 import { Card } from "@repo/ui/card"
 
 export function Minitransaction({ transaction }: { transaction: {
+    fromuser : string,
+    touser : string,
     fromUserId: number;
     toUserId: number;
     timestamp: Date;
@@ -29,10 +31,10 @@ export function Minitransaction({ transaction }: { transaction: {
                                 </div>
                             </div>
                             <div className="text-sm text-gray-700">
-                                <span className="font-semibold">From:</span> {t.fromUserId}
+                                <span className="font-semibold">From:</span> {t.fromuser}
                             </div>
                             <div className="text-sm text-gray-700">
-                                <span className="font-semibold">To:</span> {t.toUserId}
+                                <span className="font-semibold">To:</span> {t.touser}
                             </div>
                             <div className="text-md font-bold text-green-600">
                                  Amount: ₹{(t.amount / 100).toFixed(2)}

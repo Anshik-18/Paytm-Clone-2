@@ -17,6 +17,7 @@ import { authOptions } from "../../lib/auth";
     });
   
     return {
+      
         amount: balance?.amount || 0,
         locked: balance?.locked || 0
     }

@@ -41,6 +41,8 @@ async function getransaction (){
           fromUserId: "system"
         }))
       ];
+
+      
       
       allTransactions.sort((a, b) => {
         const dateA = new Date(a.timestamp).getTime();
@@ -73,6 +75,14 @@ export default async function (){
     }
 
     const transaction = await getransaction()
+
+    if(transaction.length == 0){
+      return(
+        <div className="text-3xl font-bold">
+          No recent transactions 
+        </div>
+      )
+    }
 
     
     return (

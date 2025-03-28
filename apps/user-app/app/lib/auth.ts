@@ -7,6 +7,7 @@ import prisma from "@repo/db/client";
 import { z } from "zod";
 
 const loginschema  = z.object({
+    Name: z.string(),
     PhoneNumber: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
     Password : z.string().min(6,"Password is too short")
 }) 
@@ -16,19 +17,21 @@ export const authOptions = {
       CredentialsProvider({
           name: 'Credentials',
           credentials: {
+            name: {lablel:"Name",type:"text",placeholder:"Anshik",required: true},
             phone: { label: "Phone Number", type: "text", placeholder: "1231231231", required: true },
             password: { label: "Password", type: "password", required: true }
           },
           
           async authorize(credentials: any) {
             const parsed = loginschema.safeParse({
+                Name:credentials.name,
                 PhoneNumber: credentials.phone,
                 Password : credentials.password
             })
             if (!parsed.success) {
                 throw new Error(parsed.error?.issues[0]?.message);
               }
-              const {PhoneNumber,Password} = parsed.data 
+              const {Name,PhoneNumber,Password} = parsed.data 
        
 
             const hashedPassword = await bcrypt.hash(Password, 10);
@@ -60,6 +63,7 @@ export const authOptions = {
             try {
                 const user = await db.user.create({
                     data: {
+                        name:Name,
                         number: PhoneNumber,
                         password: hashedPassword
                     }
@@ -67,6 +71,7 @@ export const authOptions = {
 
                 await prisma.balance.create({
                     data:{
+                
                         userId: user.id,
                         amount: 0,
                         locked: 0 ,     

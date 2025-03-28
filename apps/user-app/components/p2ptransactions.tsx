@@ -7,7 +7,9 @@ export const P2pTransfer = ({
     fromUserId : number,
     toUserId : number,
     timestamp  : Date,
-    amount : number
+    amount : number,
+    fromname: string,
+    toname : string
 }[]}) => {
     const title  = mode === "send" ? "Money Sent" : "Money Received";
 
@@ -34,10 +36,10 @@ export const P2pTransfer = ({
                             </div>
                         </div>
                         <div className="text-sm text-gray-700">
-                            <span className="font-semibold">From:</span> {t.fromUserId}
+                            <span className="font-semibold">From:</span> {t.fromname}
                         </div>
                         <div className="text-sm text-gray-700">
-                            <span className="font-semibold">To:</span> {t.toUserId}
+                            <span className="font-semibold">To:</span> {t.toname}
                         </div>
                         <div className="text-md font-bold text-green-600">
                              Amount: ₹{(t.amount / 100).toFixed(2)}

@@ -9,13 +9,27 @@ export async function recievedtransactions(){
     const recived = await prisma.p2pTransfer.findMany({
         where:{
             toUserId : Number(session?.user?.id)
-        }
+        },
+        include: {
+            fromUser: {
+              select: {
+                name: true, 
+              },
+            },
+            toUser: {
+              select: {
+                name: true, 
+              },
+            },
+          }
     })
     return recived.map(r =>({
         fromUserId : r.fromUserId,
         toUserId : r.toUserId,
         timestamp  : r.timestamp,
-        amount : r.amount
+        amount : r.amount,
+        fromname : r.fromUser.name || "",
+        toname  : r.toUser.name || ""
     }))
 
 }
@@ -24,13 +38,27 @@ export async function sendtransactions(){
     const send = await prisma.p2pTransfer.findMany({
         where:{
             fromUserId : Number(session?.user?.id)
-        }
+        },
+        include: {
+            fromUser: {
+              select: {
+                name: true, 
+              },
+            },
+            toUser: {
+              select: {
+                name: true, 
+              },
+            },
+          }
     })
     return send.map(r =>({
         fromUserId : r.fromUserId,
         toUserId : r.toUserId,
         timestamp  : r.timestamp,
-        amount : r.amount
+        amount : r.amount,
+        fromname : r.fromUser.name || "",
+        toname  : r.toUser.name || ""
     }))
 
 }

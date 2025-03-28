@@ -10,6 +10,7 @@ export default function SignInPage() {
     const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
 
     const [phone, setPhone] = useState("");
+    const[name,setname] = useState("")
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
@@ -18,6 +19,7 @@ export default function SignInPage() {
         setError("");
 
         const res = await signIn("credentials", {
+            name,
             phone,
             password,
             redirect: false,
@@ -39,6 +41,15 @@ export default function SignInPage() {
                 {error && <p className="text-red-500 text-center mb-2">{error}</p>}
 
                 <form onSubmit={handleSubmit} className="flex flex-col">
+                    <label className="mb-2">Name</label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setname(e.target.value)}
+                        className="border p-2 rounded mb-4"
+                        placeholder="Anshik"
+                        required
+                    />
                     <label className="mb-2">Phone Number</label>
                     <input
                         type="text"

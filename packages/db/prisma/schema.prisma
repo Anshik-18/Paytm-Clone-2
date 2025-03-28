@@ -10,7 +10,7 @@ datasource db {
 model User {
   id                Int                 @id @default(autoincrement())
   email             String?             @unique
-  name              String?
+  name              String
   number            String              @unique
   password          String
   OnRampTransaction OnRampTransaction[]
@@ -63,7 +63,7 @@ enum AuthType {
 }
 
 enum OnRampStatus {
-  Success
+  
   Failure
   Processing
 }
