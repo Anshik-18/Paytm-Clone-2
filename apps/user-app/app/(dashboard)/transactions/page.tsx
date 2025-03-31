@@ -21,7 +21,8 @@ async function getransaction (){
       const withdrawals = await prisma.onRampTransaction.findMany({
         where: {
           userId,
-          status: "Success"
+          status : "Success"
+        
         }
       });
       

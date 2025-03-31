@@ -29,12 +29,12 @@ export default async function NotificationList() {
     const noti = await notifications() ;
 
     return (
-        <div className="p-4 space-y-4">
+        <div className="p-4 space-y-4 w-full" >
             {noti.length === 0  ? (
                 <p className="text-gray-500">No notifications</p>
             ) : (
                 noti.map((n, index) => (
-                    <div key={index} className="border p-3 rounded-lg shadow-sm">
+                    <div key={index} className="border p-3 rounded-lg shadow-sm bg-white ">
                         <p className="text-sm text-gray-500">{n.time.toLocaleString()}</p>
                         <p className="font-semibold">From: {n.from}</p>
                         <p>{n.Message}</p>

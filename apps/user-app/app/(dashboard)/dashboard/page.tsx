@@ -84,7 +84,7 @@ export default  async function home() {
         <div className="w-full">
 
                 <div className="text-3xl text-[#6a51a6] pt-8 mb-8 font-bold">
-                    Welcome {name},
+                    Welcome {name}
                 </div>
 
                 <div className="text-4xl text-[#6a51a6] pt-3 mb-8 font-bold">
