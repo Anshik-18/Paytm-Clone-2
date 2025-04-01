@@ -47,8 +47,8 @@ export const authOptions = {
                     await prisma.notification.create({
                         data: {
                             userId: existingUser.id,
-                            FromuserID : null,
-                            Message: "Welcome back! Happy to see you again.",
+                            fromUserId : null,
+                            message: "Welcome back! Happy to see you again.",
                         }
                     });
                     return {
@@ -80,7 +80,7 @@ export const authOptions = {
             await prisma.notification.create({
                 data:{
                     userId: user.id,
-                    Message: "Created new account. Welcome to paytm family"
+                    message: "Created new account. Welcome to paytm family"
                 }
             })
             

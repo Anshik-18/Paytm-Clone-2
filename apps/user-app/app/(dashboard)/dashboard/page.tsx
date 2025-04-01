@@ -111,7 +111,7 @@ export default  async function home() {
                 
                     <Buttonhome path ="/p2p" text="Send Money"/>
                     <Buttonhome  path = "/transfer" text="Withdraw Money"/>
-                    <Buttonhome   path ="/" text="Request Money"/>
+                    <Buttonhome   path ="/requestmoney" text="Request Money"/>
                     <Buttonhome path = "/transaction" text = "Transactions"/>
 
                 </div>

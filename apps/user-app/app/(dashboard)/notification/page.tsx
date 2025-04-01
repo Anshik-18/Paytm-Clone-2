@@ -19,9 +19,9 @@ export async function notifications(){
     })
     return notifications.map(n=>({
         time : n.timestamp,
-        from : n.FromuserID || "system",
-        Message : n?.Message,
-        Amount : n?.Amount
+        from : n.fromUserId || "system",
+        Message : n?.message,
+        Amount : n?.amount
 
     }))
 }

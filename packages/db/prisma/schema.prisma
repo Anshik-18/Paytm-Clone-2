@@ -18,7 +18,8 @@ model User {
   sentTransfers     p2pTransfer[]       @relation(name: "FromUserRelation")
   receivedTransfers p2pTransfer[]       @relation(name: "ToUserRelation")
   Notification      Notification[]
- 
+  SentRequests      RequestMoney[]      @relation(name: "FromUser")
+  ReceivedRequests  RequestMoney[]      @relation(name: "ToUser")
 }
 
 model Merchant {
@@ -68,14 +69,29 @@ enum OnRampStatus {
   Processing
 }
 
-
 model Notification {
-  id            Int @id @default(autoincrement())
-  userId        Int
-  FromuserID    Int?
-  Message       String?
-  user          User  @relation( fields: [userId], references: [id])
-  
-  timestamp     DateTime @default(now())
-  Amount        Int?
-}             
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  fromUserId Int?
+  message    String?
+  user       User     @relation(fields: [userId], references: [id])
+  timestamp  DateTime @default(now())
+  amount     Int?
+}
+
+model RequestMoney {
+  id         Int                @id @default(autoincrement())
+  fromUserId Int
+  toUserId   Int
+  amount     Int 
+  status     RequestMoneyStatus
+
+  fromUser   User  @relation(name: "FromUser", fields: [fromUserId], references: [id])
+  toUser     User  @relation(name: "ToUser", fields: [toUserId], references: [id])
+}
+
+enum RequestMoneyStatus {
+  Requested
+  Accepted
+  Rejected
+}
