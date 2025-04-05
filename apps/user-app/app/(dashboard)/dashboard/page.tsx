@@ -70,7 +70,7 @@ async function recenttransaction(){
     const userId = Number(session?.user?.id)
     // @ts-ignore
 
-    return transaction.map(t=>({
+    return transaction.map((t:any)=>({
        
         fromuser : t.fromUser.name || "",
         touser : t.toUser.name || "",
