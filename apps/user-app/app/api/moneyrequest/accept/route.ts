@@ -3,15 +3,31 @@ import { p2pTransfer } from "../../../lib/actions/p2pTransfer";
 
 
 export async function POST(req:Request){
-    const { requestid, tonumber, amount } = await req.json();
+    const { requestid, tonumber, amount,password } = await req.json();
+     const request = await prisma.requestMoney.findFirst({
+        where:{
+            id:requestid
+        }
+    })
+    if(request?.status!="Requested"){
+        return new Response(JSON.stringify({ message: "Not possible" }), { status: 200 });
 
-    await prisma.requestMoney.update({
-        where: { id: requestid },
-        data: { status: "Accepted" },
-    });
+    }
 
-    await p2pTransfer(tonumber, amount * 100);
+ 
 
-    return new Response(JSON.stringify({ message: "Request accepted and transferred" }), { status: 200 });
+    console.log(tonumber)
+     const result = await p2pTransfer(tonumber, amount * 100,password);
+
+     if(!result?.message){
+        await prisma.requestMoney.update({
+            where: { id: requestid },
+            data: { status: "Accepted" },
+        });
+        return new Response(JSON.stringify({ message: "Accepted" }), { status: 200 });
+     }
+     
+
+    return new Response(JSON.stringify({ message: result?.message }), { status: 200 });
 
 }

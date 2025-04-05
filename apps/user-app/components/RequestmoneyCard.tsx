@@ -17,11 +17,12 @@ export const Requestcard = ()=>{
     const[name,setname] = useState <string>("");
     const[users_name,setusers_name] = useState<User[]>([])
     const[users_number,setusers_number] = useState <User[]>([])
-    const [loading, setLoading] = useState<boolean>(false);
+    const [hidden, sethidden] = useState<boolean>(false);
+   
 
 
       const handleuserclick = (user :User) => {
-        setLoading(true)
+        sethidden(true)
       
         setname(user.name);
         setnumber(user.number); 
@@ -30,7 +31,7 @@ export const Requestcard = ()=>{
     useEffect(()=>{
         
         if(name.length<2){
-            setLoading(false)
+            sethidden(false)
             setusers_name([])
             return
         }
@@ -51,7 +52,7 @@ export const Requestcard = ()=>{
 
     useEffect(()=>{
         if(number.length<2){
-            setLoading(false)
+            sethidden(false)
             setusers_number([])
             return
         }
@@ -77,7 +78,7 @@ export const Requestcard = ()=>{
                 <Textinput placeholder="Name" label="Name" onChange={(value)=>{
                     setname(value)}} value={name}/>
 
-                        <div className={users_name.length>0 &&  !loading    ? "block": "hidden"}>
+                        <div className={users_name.length>0 &&  !hidden    ? "block": "hidden"}>
                             {users_name.map((user,index)=>(
                                 <div key={index} className="cursor-pointer" onClick={()=>{
                                     handleuserclick(user)
@@ -93,7 +94,7 @@ export const Requestcard = ()=>{
                 <Textinput placeholder= "Number" label="Number" onChange={(value)=>{
                     setnumber(value)}} value={number}/>
 
-                        <div className={users_number.length>0 && !loading ?"block": "hidden"}>
+                        <div className={users_number.length>0 && !hidden ?"block": "hidden"}>
                             {users_number.map((user,index)=>(
                                 <div key={index} className="cursor-pointer" onClick={()=>{
                                     handleuserclick(user)
@@ -109,6 +110,9 @@ export const Requestcard = ()=>{
 
                 <Textinput placeholder="Amount" label="Amount" value={amount}   onChange={(value)=>{
                     setamount(value)}}/>
+
+   
+
                 
                 <Button  onClick={async ()=>{
                      await requestmoney(Number(amount),number)

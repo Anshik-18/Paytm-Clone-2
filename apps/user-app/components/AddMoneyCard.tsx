@@ -37,7 +37,7 @@ export const AddMoney = () => {
 
     <div className="w-full">
 
-        <Textinput label={"Amount"} placeholder={"Amount"} onChange={(value) => {
+        <Textinput label={"Amount"} placeholder={"Amount"} value= {String(amount)} onChange={(value) => {
             setAmount(Number(value))
 
         }} />
@@ -78,7 +78,7 @@ export const AddMoney = () => {
                     }
                 }
                 else{
-                 
+                
                       await CreteonrampsTransactions(amount*100,provider)
                     window.location.href = redirectUrl || "";
                 }

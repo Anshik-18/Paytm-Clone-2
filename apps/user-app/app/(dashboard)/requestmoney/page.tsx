@@ -32,9 +32,9 @@ import { Card } from "@repo/ui/card"
         touserid : r.toUserId,
         status : r.status,
         name : r.fromUser.name,
-        number:r.fromUser.number,
+        number : r.toUser.number,
         requestid : r.id,
-        tonumber : r.toUser.number
+        tonumber : r.fromUser.number
 
     }))
 
@@ -56,18 +56,26 @@ export default  async function request(){
                 </div>
 
 
-            {requests.length==0 ?( 
-                <Card title="Request">
-                <div className="font-black-900">
-                    No requests 
-                </div> 
-                </Card>  
-                ) 
-            :(
-                requests.map((r)=>(
-                    <Request fromUserId={r.fromUserId} amount={r.amount} touserid={r.touserid} status={r.status} name={r.name} number={r.number} requestid={r.requestid} tonumber={r.tonumber} />
-                ))
-            ) }
+                <Card title="Money requests">
+
+                {requests.length==0 ?( 
+                  
+                    <div className="font-black-900 font-bold text-xl  p-5">
+                        No requests 
+                    </div> 
+               
+                    ) 
+                    :(
+                        
+                        
+                        requests.map((r)=>(
+                            <Request fromUserId={r.fromUserId} amount={r.amount} touserid={r.touserid} status={r.status} name={r.name} number={r.number} requestid={r.requestid} tonumber={r.tonumber} />
+                        ))
+
+                    ) }
+
+                    </Card>
+
             </div>
 
         
