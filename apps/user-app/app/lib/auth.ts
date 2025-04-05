@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 import { use } from "react";
 import prisma from "@repo/db/client";
 import { z } from "zod";
+import type { AuthOptions } from "next-auth";
 
 const loginschema  = z.object({
     Name: z.string(),
@@ -12,7 +13,7 @@ const loginschema  = z.object({
     Password : z.string().min(6,"Password is too short")
 }) 
 
-export const authOptions = {
+export const authOptions:AuthOptions  = {
     providers: [
       CredentialsProvider({
           name: 'Credentials',
