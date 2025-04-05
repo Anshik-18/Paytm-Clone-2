@@ -68,7 +68,8 @@ async function recenttransaction(){
         take: 5
     })
     const userId = Number(session?.user?.id)
-    
+    // @ts-ignore
+
     return transaction.map(t=>({
        
         fromuser : t.fromUser.name || "",
