@@ -1,6 +1,7 @@
 import prisma from "@repo/db/client";
 import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
 
 export async function GET(req:NextRequest){
     try{

@@ -4,7 +4,7 @@ import { Appbar } from "@repo/ui/appbar";
 import { useRouter } from "next/navigation";
 
 import { usePathname } from "next/navigation";
-import { notifications } from "../app/(dashboard)/notification/page";
+
 
 
 export   function AppbarClient() {

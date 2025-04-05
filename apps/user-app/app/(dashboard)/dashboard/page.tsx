@@ -2,12 +2,29 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../../lib/auth"
 import prisma from "@repo/db/client";
 // import Notification from "../../../components/Notificaion";
-import { getBalance } from "../transfer/page";
+
 import { error, timeStamp } from "console";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { Minitransaction } from "../../../components/Minitransaction";
 import { P2pTransfer } from "../../../components/p2ptransactions";
 import { Buttonhome } from "../../../components/Button";
+
+
+async function getBalance() {
+    const session = await getServerSession(authOptions);
+   
+    const  balance = await prisma.balance.findFirst({
+        where: {
+            userId: Number(session?.user?.id)
+        }
+    });
+  
+    return {
+      
+        amount: balance?.amount || 0,
+        locked: balance?.locked || 0
+    }
+}
 
 async function getuserinfo(){
     const session = await getServerSession(authOptions);

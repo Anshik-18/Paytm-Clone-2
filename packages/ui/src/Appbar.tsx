@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Button } from "./button";
 import { NotificationIcon } from "./Notification";
-import {notifications} from "../../../apps/user-app/app/(dashboard)/notification/page"
+
 
 
 interface AppbarProps {

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
@@ -6,8 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SignInPage() {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+    // const searchParams = useSearchParams();
+    const callbackUrl = "/dashboard";
 
     const [phone, setPhone] = useState("");
     const[name,setname] = useState("")

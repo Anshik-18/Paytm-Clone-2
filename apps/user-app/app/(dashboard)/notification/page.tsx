@@ -2,10 +2,10 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "../../lib/auth"
 import prisma from "@repo/db/client"
-// import Notification from "../../../components/Notificaion"
+
 import { NotificationIcon } from "@repo/ui/Notification"
 
-export async function notifications(){
+ async function notifications(){
     const session   = await getServerSession(authOptions)
 
     if(!session?.user?.id){

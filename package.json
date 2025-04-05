@@ -1,5 +1,5 @@
 {
-  "name": "week-18",
+  "name": "paytm-monorepo",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -10,6 +10,7 @@
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "eslint-plugin-turbo": "^2.5.0",
     "prettier": "^3.2.5",
     "turbo": "^2.5.0"
   },

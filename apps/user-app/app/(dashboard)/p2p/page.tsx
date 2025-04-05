@@ -4,7 +4,7 @@ import { authOptions } from "../../lib/auth";
 import { P2pTransfer } from "../../../components/p2ptransactions";
 import prisma from "@repo/db/client";
 
-export async function recievedtransactions(){
+ async function recievedtransactions(){
     const session = await getServerSession(authOptions);
     const recived = await prisma.p2pTransfer.findMany({
         where:{
@@ -33,7 +33,7 @@ export async function recievedtransactions(){
     }))
 
 }
-export async function sendtransactions(){
+ async function sendtransactions(){
     const session = await getServerSession(authOptions);
     const send = await prisma.p2pTransfer.findMany({
         where:{

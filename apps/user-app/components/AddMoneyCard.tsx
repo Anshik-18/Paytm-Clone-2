@@ -67,21 +67,10 @@ export const AddMoney = () => {
                 }
                 
                 
-                if(provider==="PhonePe"){
-                    
-                    const responsedata =  await intiatiePhonePePayment(amount, provider);
-
-                    if (responsedata.success && responsedata.redirectUrl) {
-                        window.location.href = responsedata.redirectUrl; 
-                    } else {
-                        alert("PhonePe payment initiation failed");
-                    }
-                }
-                else{
                 
                       await CreteonrampsTransactions(amount*100,provider)
                     window.location.href = redirectUrl || "";
-                }
+              
             }
                 catch(e){
                     console.log(e)
