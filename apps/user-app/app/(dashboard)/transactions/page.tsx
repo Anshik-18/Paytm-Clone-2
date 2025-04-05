@@ -23,7 +23,7 @@ async function getransaction (){
       });
       
       const allTransactions = [
-        ...p2pTransactions.map(m => ({
+        ...p2pTransactions.map((m:any )=> ({
           type: "P2P",
           amount: m.amount,
           timestamp: m.timestamp,
@@ -31,7 +31,7 @@ async function getransaction (){
           toUserId: m.toUserId
           
         })),
-        ...withdrawals.map(m => ({
+        ...withdrawals.map((m:any) => ({
           type: "Withdrawal",
           amount: m.amount,
           timestamp: m.startTime,
@@ -47,7 +47,7 @@ async function getransaction (){
         return dateB - dateA; 
       });
       
-    return allTransactions.map(m=>({
+    return allTransactions.map((m:any)=>({
         type:m.type,
         amount:m.amount,
         timeStamp:m.timestamp,

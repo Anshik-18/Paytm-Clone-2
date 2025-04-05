@@ -23,7 +23,7 @@ import prisma from "@repo/db/client";
             },
           }
     })
-    return recived.map(r =>({
+    return recived.map((r:any) =>({
         fromUserId : r.fromUserId,
         toUserId : r.toUserId,
         timestamp  : r.timestamp,

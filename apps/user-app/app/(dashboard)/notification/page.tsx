@@ -17,7 +17,7 @@ import { NotificationIcon } from "@repo/ui/Notification"
             userId :  Number(session?.user?.id)
         }
     })
-    return notifications.map(n=>({
+    return notifications.map((n:any)=>({
         time : n.timestamp,
         from : n.fromUserId || "system",
         Message : n?.message,

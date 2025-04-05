@@ -26,7 +26,7 @@ import { Card } from "@repo/ui/card"
         }
     })
 
-    return request.map((r)=>({
+    return request.map((r:any)=>({
         fromUserId : r.fromUserId,
         amount : r.amount,
         touserid : r.toUserId,
