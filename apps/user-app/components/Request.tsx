@@ -25,14 +25,16 @@ export const Request = ({fromUserId,amount,touserid,status,name,number,requestid
 
     async function  accepthandle(requestid:number,tonumber:string,amount:number,password:string){
        
+        console.log("HI reached")
          const result = await fetch("/api/moneyrequest/accept",{
             method:"POST",
             body: JSON.stringify({ requestid, tonumber, amount,password }),
             headers: { "Content-Type": "application/json" },
         })
         const {message} =  await result.json()
-        console.log(message)
-      
+
+        
+        
         setRequestStatus(message)
     }
 

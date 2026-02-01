@@ -16,7 +16,7 @@ export async function POST(req:Request){
 
  
 
-    console.log(tonumber)
+    console.log("hi",tonumber)
      const result = await p2pTransfer(tonumber, amount * 100,password);
 
      if(!result?.message){
