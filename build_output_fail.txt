@@ -1,0 +1,152 @@
+
+> build
+> turbo build
+
+turbo 2.5.0
+
+• Packages in scope: @repo/db, @repo/eslint-config, @repo/store, @repo/typescript-config, @repo/ui, bank-webhook, user-app, web
+• Running build in 8 packages
+• Remote caching disabled
+bank-webhook:build: cache hit, replaying logs c9596c1b256285b2
+user-app:build: cache miss, executing cec2e587938bbe89
+bank-webhook:build: 
+bank-webhook:build: > bank-webhook@1.0.0 build
+bank-webhook:build: > npx esbuild ./src/index.ts --bundle --platform=node --outfile=dist/index.js
+bank-webhook:build: 
+bank-webhook:build: 
+bank-webhook:build:   dist\index.js  1.4mb
+bank-webhook:build: 
+bank-webhook:build: Done in 159ms
+web:build: cache miss, executing f981bbc5ee7ef8c0
+web:build: 
+web:build: > web@1.0.0 build
+web:build: > next build
+web:build: 
+user-app:build: 
+user-app:build: > user-app@1.0.0 build
+user-app:build: > next build
+user-app:build: 
+web:build:   ▲ Next.js 14.2.25
+web:build: 
+user-app:build:   ▲ Next.js 14.2.25
+user-app:build:   - Environments: .env.local
+user-app:build: 
+web:build:    Creating an optimized production build ...
+user-app:build:    Creating an optimized production build ...
+web:build: Browserslist: caniuse-lite is outdated. Please run:
+web:build:   npx update-browserslist-db@latest
+web:build:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+web:build:  ✓ Compiled successfully
+web:build:    Linting and checking validity of types ...
+user-app:build: Browserslist: caniuse-lite is outdated. Please run:
+user-app:build:   npx update-browserslist-db@latest
+user-app:build:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+user-app:build:  ✓ Compiled successfully
+user-app:build:    Linting and checking validity of types ...
+web:build: 
+web:build: ./lib/auth.ts
+web:build: 7:17  Warning: GOOGLE_CLIENT_ID is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+web:build: 8:21  Warning: GOOGLE_CLIENT_SECRET is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+web:build: 45:11  Warning: NEXTAUTH_SECRET is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+web:build: 
+web:build: info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+web:build:    Collecting page data ...
+user-app:build: 
+user-app:build: ./app/(dashboard)/dashboard/page.tsx
+user-app:build: 6:10  Warning: 'error' is defined but never used.  no-unused-vars
+user-app:build: 6:17  Warning: 'timeStamp' is defined but never used.  no-unused-vars
+user-app:build: 9:10  Warning: 'P2pTransfer' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./app/(dashboard)/notification/page.tsx
+user-app:build: 6:10  Warning: 'NotificationIcon' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./app/(dashboard)/requestmoney/page.tsx
+user-app:build: 4:10  Warning: 'useState' is defined but never used.  no-unused-vars
+user-app:build: 7:10  Warning: 'p2pTransfer' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./app/api/auth/signin/page.tsx
+user-app:build: 5:21  Warning: 'useSearchParams' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./app/api/phonepe/route.ts
+user-app:build: 81:25  Warning: PHONEPE_MERCHANT_ID is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+user-app:build: 83:26  Warning: PHONEPE_REDIRECT_URL is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+user-app:build: 84:26  Warning: PHONEPE_CALLBACK_URL is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+user-app:build: 94:44  Warning: PHONEPE_SALT_KEY is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+user-app:build: 
+user-app:build: ./app/api/user/search/route.ts
+user-app:build: 2:10  Warning: 'error' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./app/lib/actions/requestmoney.ts
+user-app:build: 5:10  Warning: 'error' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./app/lib/auth.ts
+user-app:build: 5:10  Warning: 'use' is defined but never used.  no-unused-vars
+user-app:build: 104:13  Warning: JWT_SECRET is not listed as a dependency in turbo.json  turbo/no-undeclared-env-vars
+user-app:build: 
+user-app:build: ./components/AddMoneyCard.tsx
+user-app:build: 5:10  Warning: 'Center' is defined but never used.  no-unused-vars
+user-app:build: 8:10  Warning: 'use' is defined but never used.  no-unused-vars
+user-app:build: 11:10  Warning: 'redirect' is defined but never used.  no-unused-vars
+user-app:build: 12:10  Warning: 'POST' is defined but never used.  no-unused-vars
+user-app:build: 13:10  Warning: 'intiatiePhonePePayment' is defined but never used.  no-unused-vars
+user-app:build: 14:10  Warning: 'error' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./components/Request.tsx
+user-app:build: 3:10  Warning: 'Card' is defined but never used.  no-unused-vars
+user-app:build: 10:26  Warning: 'fromUserId' is defined but never used.  no-unused-vars
+user-app:build: 10:44  Warning: 'touserid' is defined but never used.  no-unused-vars
+user-app:build: 10:65  Warning: 'number' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./components/SendCard.tsx
+user-app:build: 4:10  Warning: 'Center' is defined but never used.  no-unused-vars
+user-app:build: 6:10  Warning: 'use' is defined but never used.  no-unused-vars
+user-app:build: 8:10  Warning: 'ResultCard' is defined but never used.  no-unused-vars
+user-app:build: 
+user-app:build: ./components/Transfferresult.tsx
+user-app:build: 4:8  Warning: Expected a conditional expression and instead saw an assignment.  no-cond-assign
+user-app:build: 4:8  Warning: Unexpected constant condition.  no-constant-condition
+user-app:build: 
+user-app:build: info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+web:build:    Generating static pages (0/6) ...
+web:build:    Generating static pages (1/6) 
+web:build:    Generating static pages (2/6) 
+web:build:    Generating static pages (4/6) 
+user-app:build:    Collecting page data ...
+web:build:  ✓ Generating static pages (6/6)
+web:build: 
+web:build: Error occurred prerendering page "/api/user". Read more: https://nextjs.org/docs/messages/prerender-error
+web:build: 
+web:build: PrismaClientKnownRequestError: 
+web:build: Invalid `prisma.user.create()` invocation:
+web:build: 
+web:build: 
+web:build: Unique constraint failed on the fields: (`email`)
+web:build:     at oI.handleRequestError (C:\code\projects\Paytm-1\apps\merchant-app\.next\server\chunks\364.js:114:7798)
+web:build:     at oI.handleAndLogRequestError (C:\code\projects\Paytm-1\apps\merchant-app\.next\server\chunks\364.js:114:6880)
+web:build:     at oI.request (C:\code\projects\Paytm-1\apps\merchant-app\.next\server\chunks\364.js:114:6587)
+web:build:     at async i (C:\code\projects\Paytm-1\apps\merchant-app\.next\server\chunks\364.js:126:7482)
+web:build:     at async l (C:\code\projects\Paytm-1\apps\merchant-app\.next\server\app\api\user\route.js:1:1269)
+web:build:     at async C:\code\projects\Paytm-1\apps\merchant-app\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:38411
+web:build:     at async e_.execute (C:\code\projects\Paytm-1\apps\merchant-app\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:27880)
+web:build:     at async e_.handle (C:\code\projects\Paytm-1\apps\merchant-app\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:39943)
+web:build:     at async exportAppRoute (C:\code\projects\Paytm-1\apps\merchant-app\node_modules\next\dist\export\routes\app-route.js:77:26)
+web:build:     at async exportPageImpl (C:\code\projects\Paytm-1\apps\merchant-app\node_modules\next\dist\export\worker.js:175:20)
+web:build: 
+web:build: > Export encountered errors on following paths:
+web:build: 	/api/user/route: /api/user
+web:build: npm error Lifecycle script `build` failed with error:
+web:build: npm error code 1
+web:build: npm error path C:\code\projects\Paytm-1\apps\merchant-app
+web:build: npm error workspace web@1.0.0
+web:build: npm error location C:\code\projects\Paytm-1\apps\merchant-app
+web:build: npm error command failed
+web:build: npm error command C:\WINDOWS\system32\cmd.exe /d /s /c next build
+web:build: ERROR: command finished with error: command (C:\code\projects\Paytm-1\apps\merchant-app) C:\Program Files\nodejs\npm.cmd run build exited (1)
+web#build: command (C:\code\projects\Paytm-1\apps\merchant-app) C:\Program Files\nodejs\npm.cmd run build exited (1)
+
+ Tasks:    1 successful, 3 total
+Cached:    1 cached, 3 total
+  Time:    16.639s 
+Failed:    web#build
+
+ ERROR  run failed: command  exited (1)
