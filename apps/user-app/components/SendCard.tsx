@@ -47,7 +47,7 @@ export function SendCard() {
                             seterror("Can not process")
                         }
                     }
-                        }}>Send </Button>
+                        }}>Send Money </Button>
 
 
                     </div>

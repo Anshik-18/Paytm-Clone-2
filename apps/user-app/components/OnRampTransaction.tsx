@@ -20,22 +20,24 @@ export const OnRampTransactions = ({
     
     return <Card title="Recent Transactions">
         <div className="pt-4 ">
-            {transactions.map(t => <div className="flex justify-between pt-4">
-                <div>
-                    <div className="text-sm">
-                        Received INR
-                    </div>
-                <div className={` text-sm flex flex-col justify-center ${t.status.toLocaleLowerCase()==="success"? "text-green-600":t.status.toLocaleLowerCase()==="failure"?"text-red-500":"text-black-500" }`}>
-                        {t.status}
-                </div>
-                </div>
-                <div className="flex flex-col justify-center">
-                    <div className="text-slate-600 text-xs">
-                        {t.time.toDateString()}
-                        
-                    </div>
-                    + Rs {t.amount / 100}
-                </div>
+            {transactions.map((t, index) => <div className=" justify-between pt-1">
+            <div key={index} className="flex justify-between items-center py-2 border-b border-gray-200">
+                            <div className=" items-center ">
+                                <div>
+                                    {t.provider}
+                                </div>
+                                 
+
+                                <div className="text-sm text-gray-500 pt-1">
+                                    {new Date(t.time).toLocaleString("en-IN")}
+                                </div>
+
+                                
+                            </div>
+                            <div className={t.status === "Success" ? "text-green-500 font-semibold" : "text-red-500 font-semibold"}>
+                                ₹{(t.amount / 100).toFixed(2)}
+                            </div>
+                        </div>
                 
 
 

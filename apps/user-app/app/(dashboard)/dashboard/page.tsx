@@ -2,12 +2,14 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../../lib/auth"
 import prisma from "@repo/db/client";
 // import Notification from "../../../components/Notificaion";
+import { Send, QrCode, History,Banknote ,Download ,HandCoins  } from "lucide-react";
 
 import { error, timeStamp } from "console";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { Minitransaction } from "../../../components/Minitransaction";
 import { P2pTransfer } from "../../../components/p2ptransactions";
 import { Buttonhome } from "../../../components/Button";
+import { Monthlyspend } from "../../../components/Monthlyspend";
 
 
 async function getBalance() {
@@ -83,6 +85,16 @@ async function recenttransaction(){
     
 }
 
+async function CalculateMonthlySpend(transactions:any[]){
+        const spend_amount = transactions.reduce((total, t) => {
+            if(t.mode === "send"){
+                return total + t.amount
+            }
+            return total
+        }, 0)
+        return spend_amount 
+}
+
 
 export default  async function home() {
     const session = await getServerSession(authOptions)
@@ -99,41 +111,53 @@ export default  async function home() {
     const balance   = await  getBalance()
     const transaction =  await recenttransaction()
     const name = await getuserinfo()
+    const spend_money =  await CalculateMonthlySpend(transaction)
     return (
         <div className="w-full">
 
-                <div className="text-3xl text-[#6a51a6] pt-8 mb-8 font-bold">
-                    Welcome {name}
+                <div className="text-3xl text-[#F5F5F5] pt-8 mb-2 font-bold ">
+                    Welcome back, {name}
+                </div>
+                <div className="text-l text-[#F5F5F5] pt-2 mb-8  ">
+                    Manage your app and transactions in one place 
                 </div>
 
-                <div className="text-4xl text-[#6a51a6] pt-3 mb-8 font-bold">
-                    Transfer
-                </div>
+           
 
-                <div className=" w-full grid grid-cols-1 gap-6 md:grid-cols-2  flex p-5 " >
+                <div className=" flex flex-col md:flex-row gap-6 p-5 " >
 
-                    <div className=" ">
+                    <div className="md:w-2/4 ">
                         <BalanceCard amount={balance.amount} locked={balance.locked}/>
                     </div>
+                    <div className=" md:w-3/4 ">
+                        <Monthlyspend   spend_amount={spend_money} />
+                    </div>
+                 
 
-                    <div className="h-[200px] overflow-y-auto ">
-                        <Minitransaction   transaction={transaction} />
+
+                </div>
+
+
+                <div className="text-4xl text-[#F5F5F5] pt-8 mb-8 font-bold">
+                    Quick Actions
+                </div>
+                <div className="flex flex-col md:flex-row gap-6 p-5">
+                    <div className="grid grid-cols-3 gap-4 md:w-2/4 ">
+                    
+                        <Buttonhome path ="/p2p" text="Send Money" icon={<Send size={32}/>}/>
+                        <Buttonhome  path = "/transfer" text="Withdraw Money" icon={<Banknote size={32}/>}/>
+                        <Buttonhome   path ="/requestmoney" text="Request Money" icon={<HandCoins size={32}/>}/>
+                        <Buttonhome path = "/transaction" text = "History" icon={<History size={32}/>}/>
+
+                    </div>
+                    <div className="md:w-3/4 text-white">
+                          
+                        <Minitransaction userId={Number(session?.user?.id)}  transaction={transaction} />
+                   
                     </div>
 
                 </div>
 
-                <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
-                    Quick Actions
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-4 flex ">
-                
-                    <Buttonhome path ="/p2p" text="Send Money"/>
-                    <Buttonhome  path = "/transfer" text="Withdraw Money"/>
-                    <Buttonhome   path ="/requestmoney" text="Request Money"/>
-                    <Buttonhome path = "/transaction" text = "Transactions"/>
-
-                </div>
           
         </div>
            

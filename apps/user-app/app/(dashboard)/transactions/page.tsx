@@ -88,25 +88,72 @@ export default async function (){
                     Transactions 
                 </div>
 
-          {transaction.map(m => (
-            <div className="w-full flex">
-                <div className=" pt-[5px] w-full ">
-                    <div className="w-full bg-white py-2 pl-4 rounded-md"> 
-                        <div className="flex justify-between"> 
-                            <div className="text-xl">
-                                {m.fromUserId==userId?"Sent":m.type=="Withdrawal"?"Withdrawl":"Recieved"}
-                            </div>   
-                            <div className=" text-lg text-green-600 pr-[70px]">         
-                                    ₹{m.amount/100}
-                            </div>
-                        </div>
-                        <div className="pt-[5px] text-gray-500">
-                            {String(m.timeStamp)}
-                        </div>
-                    </div>
-                </div>            
-            </div>
-          ))}
+       {transaction.map((m, i) => {
+  const isSent = m.fromUserId === userId;
+  const label =
+    m.type === "Withdrawal"
+      ? "Withdrawal"
+      : isSent
+      ? "Money Sent"
+      : "Money Received";
+
+  const amountColor =
+    m.type === "Withdrawal"
+      ? "text-orange-400"
+      : isSent
+      ? "text-red-400"
+      : "text-emerald-400";
+
+  const formattedTime = new Date(m.timeStamp).toLocaleString();
+
+  return (
+    <div
+      key={i}
+      className="
+        bg-[#121826]
+        border border-white/10
+        rounded-xl
+        p-5
+        mb-4
+        flex justify-between items-center
+        hover:bg-[#1a2236]
+        transition
+      "
+    >
+      {/* LEFT SIDE */}
+      <div className="flex items-center gap-4">
+
+        {/* Direction Icon */}
+        <div
+          className={`
+            w-10 h-10 flex items-center justify-center
+            rounded-lg
+            ${isSent ? "bg-red-500/10" : "bg-emerald-500/10"}
+          `}
+        >
+          {isSent ? "↗" : "↙"}
+        </div>
+
+        {/* Info */}
+        <div>
+          <div className="text-lg font-semibold text-white">
+            {label}
+          </div>
+
+          <div className="text-sm text-slate-400">
+            {formattedTime}
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className={`text-lg font-semibold ${amountColor}`}>
+        {isSent ? "-" : "+"} ₹{m.amount / 100}
+      </div>
+    </div>
+  );
+})}
+
         </div>
       )
     }

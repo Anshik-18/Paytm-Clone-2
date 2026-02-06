@@ -23,11 +23,11 @@ export const Appbar = ({
 
 
 
-    return <div className="flex justify-between  items-center border-b px-4">
-        <div className="text-lg ">
-            PayTM
+    return <div className="flex justify-between  items-center  px-4">
+        <div className="text-lg text-[#F5F5F5] font-bold py-4">
+            PAYFLOW
         </div>
-        <div className="flex flex-col  ml-auto mr-4">
+        <div className="flex flex-col  ml-auto mr-4 ">
             <NotificationIcon count={1} />
 
         </div>

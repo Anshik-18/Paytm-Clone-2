@@ -10,7 +10,7 @@ export function NotificationIcon({ count }: NotificationIconProps) {
   return (
     <Link href="/notification" className="relative cursor-pointer">
       {/* Bell Icon */}
-      <Bell className="w-6 h-6 text-gray-600 hover:text-black" />
+      <Bell className="w-6 h-6 text-gray-500 hover:text-white" />
 
       {/* Red Dot for Notifications */}
       {count > 0 && (
