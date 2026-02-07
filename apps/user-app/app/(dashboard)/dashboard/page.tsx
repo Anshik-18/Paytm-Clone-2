@@ -113,7 +113,7 @@ export default async function home() {
     const name = await getuserinfo()
     const spend_money = await CalculateMonthlySpend(transaction)
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl  px-4 sm:px-6 lg:px-8">
             <div className="pt-8 mb-2">
                 <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
                     Welcome back, {name}
