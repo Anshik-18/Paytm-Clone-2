@@ -14,7 +14,7 @@ export const Sidebar = () => {
     return (
         <>
             {/* Mobile Toggle Button */}
-            <div className="md:hidden fixed top-3.5 left-6 z-50">
+            <div className="md:hidden fixed top-4.5 left-4 z-50">
                 <button onClick={() => setIsOpen(!isOpen)} className="text-slate-900 focus:outline-none bg-white/50 p-1 rounded-md">
                     <MenuIcon />
                 </button>
