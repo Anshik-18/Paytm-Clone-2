@@ -7,7 +7,49 @@ module.exports = {
     "../../packages/ui/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+      },
+      colors: {
+        primary: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#3b82f6', // Electric Blue Accent
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+        },
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155', // Deep Blue-Grey
+          800: '#1e293b', // Darker Blue-Grey
+          900: '#0f172a', // "Titanium" / Midnight Blue
+          950: '#020617',
+        },
+        gold: {
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+        },
+        // Mapping old indigo to Slate-900 for instant theme pivot
+        indigo: {
+          600: '#3b82f6', // Remap to Blue-600 (Electric Blue)
+          700: '#1d4ed8',
+          50: '#f0f9ff',
+        }
+      },
+    },
   },
   plugins: [],
 }

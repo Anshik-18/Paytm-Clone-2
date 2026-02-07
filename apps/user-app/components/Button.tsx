@@ -3,24 +3,15 @@
 import { useRouter } from "next/navigation";
 
 
-export  const  Buttonhome =({path,text,icon}:{ path: string  ,text:string,icon:React.ReactNode})=>{
+export const Buttonhome = ({ path, text, icon }: { path: string, text: string, icon: React.ReactNode }) => {
     const router = useRouter();
     return (
-        <button  onClick = {() => router.push(path)} className=" flex flex-col items-center justify-center
-        gap-2
-        w-full
-        rounded-2xl
-        bg-gradient-to-b from-white to-gray-100
-        shadow-sm
-        border
-        transition-transform duration-200
-        hover:scale-105 hover:shadow-md
-        transition-all
-        py-5">
-            <div className="text-3xl text-indigo-500">{icon}</div>
-
-           <p className="text-sm font-medium text-gray-700">{text}</p>
+        <button className="group flex flex-col items-center justify-center gap-3 w-full p-6 rounded-xl bg-white border border-slate-100 shadow-sm hover:shadow-lg hover:border-black/10 transition-all duration-300 active:scale-95 cursor-pointer"
+            onClick={() => router.push(path)}>
+            <div className="text-black group-hover:scale-110 transition-transform duration-300">
+                {icon}
+            </div>
+            <p className="text-sm font-semibold text-slate-600 group-hover:text-black transition-colors">{text}</p>
         </button>
-
     )
 } 

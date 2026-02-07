@@ -3,14 +3,14 @@ import Link from "next/link";
 
 interface NotificationIconProps {
   count: number;
-  
+
 }
 
 export function NotificationIcon({ count }: NotificationIconProps) {
   return (
     <Link href="/notification" className="relative cursor-pointer">
       {/* Bell Icon */}
-      <Bell className="w-6 h-6 text-gray-500 hover:text-white" />
+      <Bell className="w-6 h-6 text-slate-500 hover:text-indigo-600 transition-colors" />
 
       {/* Red Dot for Notifications */}
       {count > 0 && (
