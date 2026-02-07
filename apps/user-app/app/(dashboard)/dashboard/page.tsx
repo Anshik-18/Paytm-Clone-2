@@ -142,7 +142,7 @@ export default async function home() {
                         <Buttonhome path="/p2p" text="Send" icon={<Send size={24} />} />
                         <Buttonhome path="/transfer" text="Withdraw" icon={<Banknote size={24} />} />
                         <Buttonhome path="/requestmoney" text="Request" icon={<HandCoins size={24} />} />
-                        <Buttonhome path="/transaction" text="History" icon={<History size={24} />} />
+                        <Buttonhome path="/transactions" text="History" icon={<History size={24} />} />
                     </div>
                     <div className="lg:w-2/5">
                         <Minitransaction userId={Number(session?.user?.id)} transaction={transaction} />
