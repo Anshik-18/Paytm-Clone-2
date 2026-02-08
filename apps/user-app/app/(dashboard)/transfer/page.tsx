@@ -42,11 +42,24 @@ export default async function balance() {
     const session = await getServerSession(authOptions)
 
     if(!session?.user?.id){
-        return(
-            <div>
-                User Not Logged in
-            </div>
-        )
+   return (
+    <div className=" w-full flex flex-col items-center justify-center h-[50vh] text-center">
+      <h1 className="text-2xl font-semibold mb-2">
+        You're not signed in
+      </h1>
+
+      <p className="text-slate-500 mb-6 max-w-sm">
+        You need to log in to access this page.  
+      </p>
+
+      <a
+        href="/api/auth/signin"
+        className="px-5 py-2 rounded-lg bg-black text-white hover:opacity-90 transition"
+      >
+        Sign In
+      </a>
+    </div>
+  );
     }
   
     const balance = await getBalance();

@@ -63,12 +63,24 @@ export default async function () {
   const userId = Number(session?.user?.id)
 
   if (!session?.user?.id) {
-    return (
-      <div className="  text-4xl font-bold ">
-        Uses not logged in
-      </div>
+     return (
+    <div className=" w-full flex flex-col items-center justify-center h-[50vh] text-center">
+      <h1 className="text-2xl font-semibold mb-2">
+        You're not signed in
+      </h1>
 
-    )
+      <p className="text-slate-500 mb-6 max-w-sm">
+        You need to log in to access this page.  
+      </p>
+
+      <a
+        href="/api/auth/signin"
+        className="px-5 py-2 rounded-lg bg-black text-white hover:opacity-90 transition"
+      >
+        Sign In
+      </a>
+    </div>
+  );
   }
 
   const transaction = await getransaction()
