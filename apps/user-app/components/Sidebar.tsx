@@ -10,7 +10,9 @@ export const Sidebar = () => {
     useEffect(() => {
         setIsOpen(false);
     }, [pathname]);
-
+        if (pathname === "/api/auth/signin") {
+            return null;
+        }
     return (
         <>
             {/* Mobile Toggle Button */}
@@ -43,6 +45,7 @@ export const Sidebar = () => {
         </>
     );
 };
+
 
 function SidebarContent() {
     return (
